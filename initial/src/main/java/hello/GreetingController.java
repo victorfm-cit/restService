@@ -18,18 +18,19 @@ public class GreetingController {
     @RequestMapping("/greeting")  //A @RequestMapping anotação assegura que as solicitações HTTP
                                 // /greeting sejam mapeadas para o greeting() método.
 
-    public Greeting greeting(@RequestParam(value="name", defaultValue ="World") String name) {
+    public String greeting(@RequestParam(value="name", defaultValue ="World") String name) {
          //final String ultimaLetra = name.charAt(name.length()-1);
         String ultimoCaracter = String.valueOf(name.charAt(name.length()-1));
         if (ultimoCaracter.equals("a") )  { //o ultimo caracter
             //name.charAt(name.length()-1);
-            System.out.println("Hello Senhorita " + name.length());
-            System.out.println(name.charAt(name.length()-1));
+            return "Hello Senhorita " + name;
+            //System.out.println(name.charAt(name.length()-1));
+
         } else {
-            System.out.println("Hello Senhor "+name);
-            System.out.println(name.charAt(name.length()-1));
+            return "Hello Senhor "+name;
+            //name.charAt(name.length()-1);
         }
 
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+        //return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 }
