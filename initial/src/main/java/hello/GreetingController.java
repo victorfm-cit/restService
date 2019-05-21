@@ -19,18 +19,19 @@ public class GreetingController {
                                 // /greeting sejam mapeadas para o greeting() método.
 
     public String greeting(@RequestParam(value="name", defaultValue ="World") String name) {
-         //final String ultimaLetra = name.charAt(name.length()-1);
         String ultimoCaracter = String.valueOf(name.charAt(name.length()-1));
-        if (ultimoCaracter.equals("a") )  { //o ultimo caracter
-            //name.charAt(name.length()-1);
+        if (ultimoCaracter.equals("a") )  {
             return "Hello Senhorita " + name;
-            //System.out.println(name.charAt(name.length()-1));
-
         } else {
             return "Hello Senhor "+name;
-            //name.charAt(name.length()-1);
         }
-
-        //return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
+
+    @RequestMapping("/mathpow") //through the calculator it calculates the value squared
+    public String mathpow() {
+        double a = Math.pow(2, 2);
+        return "resultado: " + a ;
+    }
+
+
 }
