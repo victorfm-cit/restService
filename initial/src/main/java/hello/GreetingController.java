@@ -16,22 +16,26 @@ public class GreetingController {
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/greeting")  //A @RequestMapping anotação assegura que as solicitações HTTP
-                                // /greeting sejam mapeadas para o greeting() método.
+    // /greeting sejam mapeadas para o greeting() método.
 
-    public String greeting(@RequestParam(value="name", defaultValue ="World") String name) {
-        String ultimoCaracter = String.valueOf(name.charAt(name.length()-1));
-        if (ultimoCaracter.equals("a") )  {
+    public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        String ultimoCaracter = String.valueOf(name.charAt(name.length() - 1));
+        if (ultimoCaracter.equals("a")) {
             return "Hello Senhorita " + name;
         } else {
-            return "Hello Senhor "+name;
+            return "Hello Senhor " + name;
         }
     }
 
     @RequestMapping("/mathpow") //through the calculator it calculates the value squared
     public String mathpow() {
         double a = Math.pow(2, 2);
-        return "resultado: " + a ;
+        return "resultado: " + a;
     }
 
-
+    @RequestMapping("/calculator")
+    public double calculator(@RequestParam(value = "num", defaultValue = "World") double num) {
+        num = Math.pow(num, 2);
+        return num;
+    }
 }
